@@ -4,6 +4,7 @@ from evdev import InputDevice, categorize, ecodes, KeyEvent
 from pyzabbix import ZabbixMetric, ZabbixSender
 import re, datetime
 gamepad = InputDevice('/dev/input/event0')
+debug=1
 
 UPDATE_INTERVAL = 10000
 CURRENT_INTERVAL = 10
@@ -95,18 +96,19 @@ for event in gamepad.read_loop():
     else:
       b12 = 0
     
-    print("B1:"+str(b1))
-    print("B2:"+str(b2))
-    print("B3:"+str(b3))
-    print("B4:"+str(b4))
-    print("B5:"+str(b5))
-    print("B6:"+str(b6))
-    print("B7:"+str(b7))
-    print("B8:"+str(b8))
-    print("B9:"+str(b9))
-    print("B10:"+str(b10))
-    print("B11:"+str(b11))
-    print("B12:"+str(b12))
+    if debug ==1 
+      print("B1:"+str(b1))
+      print("B2:"+str(b2))
+      print("B3:"+str(b3))
+      print("B4:"+str(b4))
+      print("B5:"+str(b5))
+      print("B6:"+str(b6))
+      print("B7:"+str(b7))
+      print("B8:"+str(b8))
+      print("B9:"+str(b9))
+      print("B10:"+str(b10))
+      print("B11:"+str(b11))
+      print("B12:"+str(b12))
 
     packet = [
       ZabbixMetric('pimon', 'usb.joypad.b1', b1),
