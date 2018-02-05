@@ -127,5 +127,8 @@ for event in gamepad.read_loop():
       ZabbixMetric('pimon', 'usb.joypad.b11', b11),
       ZabbixMetric('pimon', 'usb.joypad.b12', b12),
 
-    ]
-    result = ZabbixSender(use_config=True).send(packet)
+    ]    
+    try: 
+      result = ZabbixSender(use_config=True).send(packet)
+    except Exception:
+      print ("Failed to connect to Zabbix server")
