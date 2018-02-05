@@ -3,11 +3,14 @@
 from evdev import InputDevice, categorize, ecodes, KeyEvent
 from pyzabbix import ZabbixMetric, ZabbixSender
 import re, datetime
-gamepad = InputDevice('/dev/input/event0')
-debug=1
 
-UPDATE_INTERVAL = 10000
-CURRENT_INTERVAL = 10
+hostname = 'pimon'
+debug=1 # 1:On 0:Off
+gamepad = InputDevice('/dev/input/event0') # 1st gamepad device
+update_interval = 10000 # How often to we force an update?
+current_interval = 0 # How long until next update?
+
+#Initial button states 
 b1 = 0
 b2 = 0
 b3 = 0
